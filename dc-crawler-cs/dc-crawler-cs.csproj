@@ -57,6 +57,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticleRank.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArticleRank.Designer.cs">
+      <DependentUpon>ArticleRank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColumnSorter.cs" />
     <Compile Include="DCInside\Common.cs" />
     <Compile Include="DCInside\Gallery.cs" />
     <Compile Include="DCInside\GalleryList.cs" />
@@ -71,6 +78,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queue.cs" />
     <Compile Include="Version.cs" />
+    <EmbeddedResource Include="ArticleRank.resx">
+      <DependentUpon>ArticleRank.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

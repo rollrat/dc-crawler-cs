@@ -209,6 +209,7 @@
             this.ArticleList.TabIndex = 20;
             this.ArticleList.UseCompatibleStateImageBehavior = false;
             this.ArticleList.View = System.Windows.Forms.View.Details;
+            this.ArticleList.DoubleClick += new System.EventHandler(this.ArticleList_DoubleClick);
             // 
             // columnHeader1
             // 
@@ -249,6 +250,7 @@
             // 
             // bLoad
             // 
+            this.bLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bLoad.FontSize = MetroFramework.MetroButtonSize.Medium;
             this.bLoad.Location = new System.Drawing.Point(957, 13);
             this.bLoad.Name = "bLoad";
@@ -488,6 +490,7 @@
             this.statusStrip1.Location = new System.Drawing.Point(20, 569);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1116, 22);
+            this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 5;
             this.statusStrip1.Text = "statusStrip1";
             // 

@@ -11,6 +11,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net;
@@ -30,6 +31,8 @@ namespace dc_crawler_cs
         {
             Text += Version.Text;
 
+            ColumnSorter.InitListView(ArticleList);
+
             ServicePointManager.DefaultConnectionLimit = 1048576;
             Task.Run(() => InitGalleryListAsync());
         }
@@ -44,7 +47,7 @@ namespace dc_crawler_cs
             {
                 foreach (var gallery in gallery_list)
                 {
-                    GalleryList.AutoCompleteCustomSource.Add(gallery.Key);
+                    GalleryList.AutoCompleteCustomSource.Add($"{gallery.Key} ({gallery.Value.identification})");
                     GalleryList.Items.Add($"{gallery.Key} ({gallery.Value.identification})");
                 }
             });
@@ -113,6 +116,16 @@ namespace dc_crawler_cs
             for (int i = (int)(numStartPage.Value); i <= (int)(numLastPage.Value); i++)
             {
                 queue.Add(Gallery.GetGalleryUrl(gallery_list[gallery_name].identification, i.ToString()));
+            }
+        }
+
+        private void ArticleList_DoubleClick(object sender, EventArgs e)
+        {
+            if (ArticleList.SelectedItems.Count > 0)
+            {
+                string gallery_name = GalleryList.Text.Split('(')[0].TrimEnd();
+
+                Process.Start($"http://gall.dcinside.com/board/view/?id={gallery_list[gallery_name].identification}&no={ArticleList.SelectedItems[0].Text}");
             }
         }
 
